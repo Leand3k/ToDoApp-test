@@ -34,6 +34,23 @@ export class ToDoAPIService {
       .pipe(retry(3), catchError(this.errorHandl));
   }
 
+  // Get single Task
+  public getTask(id: number): Observable<any> {
+    return this.httpClient.get(this.baseurl + `/${id}`);
+  }
+
+  // Update Task
+  public updateTask(id: number, value: any): Observable<any> {
+    return this.httpClient.put(this.baseurl + `/${id}`, value);
+  }
+
+  // Delete single task
+  public deleteTask(id: number): Observable<any> {
+    return this.httpClient.delete(this.baseurl + `/${id}`, {
+      responseType: 'text',
+    });
+  }
+
   // Error Handling
   errorHandl(error: { error: { message: string }; status: any; message: any }) {
     let errorMessage = '';

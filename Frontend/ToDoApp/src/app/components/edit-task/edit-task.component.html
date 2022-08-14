@@ -1,1 +1,36 @@
-<p>edit-task works!</p>
+<br />
+<div class="container border border-warning border-1 justify-content-center wrapper">
+    <h3>
+        <img src="https://www.svgrepo.com/show/60515/edit.svg" style="width: 30px;"/>
+        Edit Task
+    </h3>
+    <div [hidden]="submitted" class="div--main--form">
+        <form (ngSubmit)="onSubmit()" [hidden]="submitted">
+            <div [hidden]="submitted" class="modal-body" >
+                   <div class="input-group input-group-sm mb-3">
+                    <label class="form-label" style="padding-right: 10px;">Task</label>
+                    <input required [(ngModel)]="task.Name" name="taskname" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <label class="form-label" style="padding-right: 10px;">Initial Date</label>
+                    <input required [(ngModel)]="task.DateBegin" name="DateBegin" type="date" id="initial-date" class="form-control">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <label class="form-label" style="padding-right: 10px;">Ending Date</label>
+                    <input required [(ngModel)]="task.DateEnd" name="DateEnd" type="date" id="initial-date" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="d-flex justify-content-center" style="margin-right: 1rem;">
+                    <button type="submit" class="btn btn-success btn--submit--add">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div [hidden]="!submitted">
+        <h4>You submitted successfully!</h4>
+
+    </div>
+    <br>
+    <br>
+</div>

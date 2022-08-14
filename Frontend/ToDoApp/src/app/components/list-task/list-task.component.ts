@@ -4,6 +4,7 @@ import { ToDoAPIService } from 'src/app/Services/to-do-api.service';
 import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { CreateTaskComponent } from '../create-task/create-task.component';
+import { EditTaskComponent } from '../edit-task/edit-task.component';
 
 @Component({
   selector: 'app-list-task',
@@ -34,6 +35,21 @@ export class ListTaskComponent implements OnInit {
 
   openAdd() {
     this.modalService.open(CreateTaskComponent);
+  }
+
+  openEdit(id: number) {
+    this.router.navigate(['edit', id]);
+    console.log(id);
+  }
+
+  deleteTask(id: number) {
+    this.todoService.deleteTask(id).subscribe(
+      (data) => {
+        console.log(data);
+        this.ngOnInit();
+      },
+      (error) => console.log(error)
+    );
   }
 
   private getDismissReason(reason: any): string {
