@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using todo_app_backend.Models;
 
@@ -10,9 +11,10 @@ using todo_app_backend.Models;
 namespace todo_app_backend.Migrations
 {
     [DbContext(typeof(DbsetupContext))]
-    partial class DbsetupContextModelSnapshot : ModelSnapshot
+    [Migration("20220813203025_ThirdVersion")]
+    partial class ThirdVersion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

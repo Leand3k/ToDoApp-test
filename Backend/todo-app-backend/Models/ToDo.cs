@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using FluentValidation;
 
 namespace todo_app_backend.Models
 {
@@ -20,11 +21,19 @@ namespace todo_app_backend.Models
 
         public string? Name { get; set; }
 
-        public DateTime DateBegin { get; set; }
-        public DateTime DateEnd { get; set; }
+        public string DateBegin { get; set; }
+        public string DateEnd { get; set; }
 
         public bool IsCompleted { get; set; }
 
 
+    }
+
+    public class ToDoValidator : AbstractValidator<ToDo>
+    {
+        public ToDoValidator()
+        {
+            RuleFor(todo => todo.Name).NotNull().NotEmpty();
+        }
     }
 }

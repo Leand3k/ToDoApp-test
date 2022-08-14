@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using todo_app_backend.Models;
 
+
 namespace todo_app_backend.Services
 {
     public class ToDoServices
     {
         // Create single ToDo
-        public static string CreateToDo(string name, DateTime dateBegin, DateTime dateEnd, bool status)
+        public static string CreateToDo(string name, string dateBegin, string dateEnd, bool status)
         {
             var db = new DbsetupContext();
 
@@ -52,6 +53,7 @@ namespace todo_app_backend.Services
             {
                 var UpdatedToDo = await db.ToDo.FirstOrDefaultAsync(todosearch => todosearch.ToDoID == todo.ToDoID);
 
+                UpdatedToDo.ToDoID = todo.ToDoID;
                 UpdatedToDo.Name = todo.Name;
                 UpdatedToDo.DateBegin= todo.DateBegin;
                 UpdatedToDo.DateEnd= todo.DateEnd;
