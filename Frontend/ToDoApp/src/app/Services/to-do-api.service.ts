@@ -27,6 +27,13 @@ export class ToDoAPIService {
     });
   }
 
+  // Get all Task
+  public getTasks(): Observable<any> {
+    return this.httpClient
+      .get<ToDo>(this.baseurl + '/all')
+      .pipe(retry(3), catchError(this.errorHandl));
+  }
+
   // Error Handling
   errorHandl(error: { error: { message: string }; status: any; message: any }) {
     let errorMessage = '';

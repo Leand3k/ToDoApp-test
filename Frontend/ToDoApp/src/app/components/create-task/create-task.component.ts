@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbModal,
+  ModalDismissReasons,
+  NgbActiveModal,
+} from '@ng-bootstrap/ng-bootstrap';
 import { ToDo } from 'src/app/model/to-do';
 import { ToDoAPIService } from 'src/app/Services/to-do-api.service';
 
@@ -15,7 +19,8 @@ export class CreateTaskComponent implements OnInit {
     private modalService: NgbModal,
     public todoService: ToDoAPIService,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private activeModal: NgbActiveModal
   ) {}
   ngOnInit(): void {}
 
@@ -34,32 +39,36 @@ export class CreateTaskComponent implements OnInit {
     this.createTask();
   }
 
+  closeModal() {
+    this.activeModal.close('Modal closed');
+  }
+
   //#region Modal code
 
   closeResult = '';
 
-  open(content: any) {
-    this.modalService
-      .open(content, { ariaLabelledBy: 'modal-basic-title' })
-      .result.then(
-        (result) => {
-          this.closeResult = `Closed with: ${result}`;
-        },
-        (reason) => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        }
-      );
-  }
+  // open(content: any) {
+  //   this.modalService
+  //     .open(content, { ariaLabelledBy: 'modal-basic-title' })
+  //     .result.then(
+  //       (result) => {
+  //         this.closeResult = `Closed with: ${result}`;
+  //       },
+  //       (reason) => {
+  //         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  //       }
+  //     );
+  // }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
+  // private getDismissReason(reason: any): string {
+  //   if (reason === ModalDismissReasons.ESC) {
+  //     return 'by pressing ESC';
+  //   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+  //     return 'by clicking on a backdrop';
+  //   } else {
+  //     return `with: ${reason}`;
+  //   }
+  // }
 
   //#endregion
 }
