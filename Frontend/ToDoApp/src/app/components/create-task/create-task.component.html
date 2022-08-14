@@ -1,14 +1,29 @@
-<ng-template #content let-modal>
+<ng-template #content let-modal >
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <h4 class="modal-title" id="modal-basic-title">Create Task</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
-    <div class="modal-body">
-      <h1>hi</h1>
-    </div>
-    <div class="modal-footer">
-      <p>ola</p>
-    </div>
+    <form (ngSubmit)="onSubmit()" [hidden]="submitted">
+        <div [hidden]="submitted" class="modal-body" >
+            <div class="input-group input-group-sm mb-3">
+                <label class="form-label" style="padding-right: 10px;">Task</label>
+                <input required [(ngModel)]="tasks.Name" name="taskname" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <label class="form-label" style="padding-right: 10px;">Initial Date</label>
+                <input required [(ngModel)]="tasks.DateBegin" name="DateBegin" type="date" id="initial-date" class="form-control">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <label class="form-label" style="padding-right: 10px;">Ending Date</label>
+                <input required [(ngModel)]="tasks.DateEnd" name="DateEnd" type="date" id="initial-date" class="form-control">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="d-flex justify-content-center" style="margin-right: 1rem;">
+                <button type="submit" class="btn btn-success btn--submit--add">Submit</button>
+            </div>
+        </div>
+    </form>
   </ng-template>
   
   <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
