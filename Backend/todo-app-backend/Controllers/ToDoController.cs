@@ -55,7 +55,7 @@ namespace todo_app_backend.Controllers
         
         //[Route("Update")]
         [HttpPut("{id}")]
-        public JsonResult Update([FromRoute] int id, [FromForm] ToDo todo)
+        public JsonResult Update([FromRoute] int id, [FromBody] ToDo todo)
         {
             if (ModelState.IsValid)
             {

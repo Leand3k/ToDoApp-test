@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using FluentValidation;
+using System.ComponentModel;
 
 namespace todo_app_backend.Models
 {
@@ -24,7 +25,8 @@ namespace todo_app_backend.Models
         public string DateBegin { get; set; }
         public string DateEnd { get; set; }
 
-        public bool IsCompleted { get; set; }
+        [DefaultValue(false)]
+        public bool IsCompleted { get; set; } = false;
 
 
     }
