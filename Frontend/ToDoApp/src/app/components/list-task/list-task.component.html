@@ -17,8 +17,11 @@
         
         <li class="task">
             {{task.name}}
-            <input class="form-check-input icon-li" type="checkbox" value="" id="defaultCheck1">
-            <img class="icon-li" src="https://www.svgrepo.com/show/286705/forbidden-cancel.svg" type="button" style="width: 25px;" (click)="deleteTask(task.toDoID)"/> 
+            <div *ngIf="task.isCompleted">
+                <img src="https://www.svgrepo.com/show/286714/check-tick.svg" style="width: 25px;"/>
+            </div>
+            
+            <img class="icon-li" src="https://www.svgrepo.com/show/286685/rubbish-delete.svg" type="button" style="width: 25px;" (click)="deleteTask(task.toDoID)"/> 
             <img class="icon-li" src="https://www.svgrepo.com/show/286751/edit.svg" type="button" style="width: 25px;" (click)="openEdit(task.toDoID)"/> 
             
         </li>

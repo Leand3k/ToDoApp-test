@@ -27,6 +27,8 @@ export class ListTaskComponent implements OnInit {
     });
   }
 
+  IsCompleted = true;
+
   addTask() {
     this.router.navigate(['create']);
   }

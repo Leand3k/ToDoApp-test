@@ -37,6 +37,11 @@ export class EditTaskComponent implements OnInit {
     this.editTask();
   }
 
+  checkCheckBoxvalue(event: { checked: any; }){
+    console.log(event.checked)
+  }
+
+
   editTask() {
     this.todoService.updateTask(this.id, this.task).subscribe(
       (data) => console.log(data),
