@@ -54,4 +54,5 @@ export class EditTaskComponent implements OnInit {
   taskList() {
     this.router.navigate(['']);
   }
+
 }

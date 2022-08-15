@@ -1,7 +1,7 @@
 <br />
 <div class="container border border-warning border-1 justify-content-center wrapper">
     <h3>
-        <img src="https://www.svgrepo.com/show/60515/edit.svg" style="width: 30px;"/>
+        <img src="https://www.svgrepo.com/show/60515/edit.svg" style="width: 30px;" type="button" (click)="taskList()"/>
         Edit Task
     </h3>
     <div [hidden]="submitted" class="div--main--form">
@@ -23,12 +23,6 @@
             </div>
             <div class="modal-footer">
                 <div style="padding-right: 15px;">
-                    <!-- <div class="form-check" >
-                        <input required [(ngModel)]="task.IsCompleted" name="status" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
-                          Status
-                        </label>
-                    </div> -->
                     <select [(ngModel)]="task.IsCompleted" name="status">
                         <option [ngValue]="false">Incompleto</option>
                         <option [ngValue]="true">Completado</option>
